@@ -1,0 +1,11 @@
+<div *ngIf="login; else loginpls">
+  <span>Logout</span><span>My Page</span>
+</div>
+<ng-template #loginpls>
+  <form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm.value)">
+    ID : <input formControlName="userId" type="text"><br/>
+    PW : <input formControlName="userPwd" type="password"><br/>
+    <button type="submit">SignIn</button>
+    <button type="button" (click)="goSignUpForm()">SignUp</button>
+  </form>
+</ng-template>
