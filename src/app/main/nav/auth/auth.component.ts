@@ -36,6 +36,7 @@ export class AuthComponent implements OnInit {
         if(res as object !== null) {
           this.login = true;
           this.currentUser = res.userId;
+          this.router.navigateByUrl('/dashboard');
         }else {
           console.log('재입력 요청')
         }

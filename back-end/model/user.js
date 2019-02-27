@@ -19,4 +19,13 @@ userSchema.statics.findOneUser = function(userInfo) {
   return this.findOne(userInfo);
 }
 
+userSchema.statics.userFindAll = function() {
+  return this.find({});
+}
+
+userSchema.statics.userDelete = function(userId) {
+  console.log(`schema.userDelete : ${userId}`)
+  return this.remove({ userId });
+}
+
 module.exports = mongoose.model('user', userSchema);

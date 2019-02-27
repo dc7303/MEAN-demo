@@ -15,3 +15,17 @@ exports.signUp = (req, res, next) => {
       console.error(err);
     });
 }
+
+exports.userFindAll = (req, res, next) => {
+  User.userFindAll()
+    .then(users => res.send(users))
+    .catch(err => {
+      res.send(err)
+    });
+}
+
+exports.userDelete = (req, res, next) => {
+  User.userDelete(req.query.userId)
+    .then(result => res.send(result))
+    .catch(err => console.log(`[ERROR] UserDelete : ${err}`));
+}
