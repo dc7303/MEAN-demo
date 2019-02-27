@@ -1,8 +1,10 @@
 var createError = require('http-errors');
 var express = require('express');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 var cors = require('cors');
+var mongoose = require('mongoose');
 
 var authRouter = require('./routes/auth');
 
@@ -13,7 +15,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
+/** mongoose */
+mongoose.Promise = require('bluebird');
+mongoose.connect('mongodb://localhost/mean_stack', { useNewUrlParser: true })
+  .then(() => console.log('Successfully connected to mongodb!'))
+  .catch(err => console.err(err));
 
 app.use('/auth', authRouter);
 

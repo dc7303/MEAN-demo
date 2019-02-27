@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { User } from '../../../interface/userInfo';
@@ -13,6 +13,10 @@ import { AuthService } from '../../../service/nav/auth.service';
 export class AuthComponent implements OnInit {
 
   @Input() login: boolean
+  private inputId: string;
+  private currentUser: string;
+  name:string;
+
   private signInForm = new FormGroup({
     userId: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
     userPwd: new FormControl('', Validators.required)
@@ -28,14 +32,23 @@ export class AuthComponent implements OnInit {
 
   signIn(user: User): void {
     this.authService.signIn(user).subscribe(
-      res => console.log(res),
-      err => console.log(`auth-component error :: ${err}`),
-      () => console.log('success')
+      res => {
+        if(res as object !== null) {
+          this.login = true;
+          this.currentUser = res.userId;
+        }else {
+          console.log('재입력 요청')
+        }
+      },
+      err => console.log(`auth-component error :: ${err}`)
     );
+  }
+
+  logout() {
+    this.login = false;
   }
 
   goSignUpForm() {
     this.router.navigateByUrl('/signUpForm');
   }
-
 }

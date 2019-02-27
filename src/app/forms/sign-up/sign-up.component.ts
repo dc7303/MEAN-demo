@@ -29,9 +29,9 @@ export class SignUpComponent implements OnInit {
   signUp(user: User): void {
     this.authService.signUp(user)
       .subscribe(
-        res => console.log(res),
+        () => {},
         err => console.log(`angular :: ${JSON.stringify(err)}`),
-        () => console.log('success!')
+        () => this.router.navigateByUrl('/')
       );
   }
 

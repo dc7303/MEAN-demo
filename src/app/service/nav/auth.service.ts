@@ -18,13 +18,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  signIn(user: User): Observable<boolean> {
-    let result: boolean;
-
-    return this.http.post<boolean>(`${NODE_URL}/auth/signIn`, user);
+  signIn(user: User): Observable<any> {
+    return this.http.post<any>(`${NODE_URL}/auth/signIn`, user);
   }
 
-  signUp(user: User): Observable<boolean> {
-    return this.http.post<boolean>(`${NODE_URL}/auth/signUp`, user, {responseType: 'json'});
+  signUp(user: User): Observable<any> {
+    return this.http.post<any>(`${NODE_URL}/auth/signUp`, user, {responseType: 'json'});
   }
 }
