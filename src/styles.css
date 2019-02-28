@@ -4,15 +4,19 @@ html body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  background-color: #2D3139;
-  color: greenyellow;
+  /* background-color: #2D3139; */
+  color: #333;
 }
 
 a {
   text-decoration: none;
-  color: greenyellow
+  color: #333;
 }
 
 li {
   list-style: none;
+}
+
+h2 {
+  color: orange;
 }

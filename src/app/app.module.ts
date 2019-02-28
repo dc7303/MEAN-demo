@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { TuiModule } from 'ngx-tui-editor';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './main/nav/nav.component';
@@ -11,6 +13,7 @@ import { AuthComponent } from './main/nav/auth/auth.component';
 import { SignUpComponent } from './forms/sign-up/sign-up.component';
 import { MainComponent } from './dashboard/main/main.component';
 import { UserComponent } from './dashboard/user/user.component';
+import { BoardComponent } from './main/nav/board/board.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { UserComponent } from './dashboard/user/user.component';
     AuthComponent,
     SignUpComponent,
     MainComponent,
-    UserComponent
+    UserComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,8 @@ import { UserComponent } from './dashboard/user/user.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TuiModule
   ],
   providers: [],
   bootstrap: [AppComponent]

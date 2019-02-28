@@ -1,0 +1,8 @@
+<h2>board</h2>
+<div>
+  <form #boardForm="ngForm" (ngSubmit)="boardInsert(boardForm.value)">
+    제목: <input type="text" name="title" ngModel>
+    <tui-editor [options]="editorOptions"></tui-editor>
+    <button type="submit">글작성</button>
+  </form>
+</div>

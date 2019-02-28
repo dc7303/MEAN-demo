@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var cookieParser = require('cookie-parser');
@@ -7,6 +8,7 @@ var cors = require('cors');
 var mongoose = require('mongoose');
 
 var authRouter = require('./routes/auth');
+var boardRouter = require('./routes/board');
 
 var app = express();
 
@@ -20,11 +22,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 /** mongoose */
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/mean_stack', { useNewUrlParser: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
   .then(() => console.log('Successfully connected to mongodb!'))
   .catch(err => console.err(err));
 
 app.use('/auth', authRouter);
+app.use('/board', boardRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,7 +42,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({ message: err.message, error: err });
 });
 
 module.exports = app;

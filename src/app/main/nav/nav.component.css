@@ -1,9 +1,9 @@
 .nav {
-  border: 1px solid black;
-  width: 300px;
+  width: 800px;
   height: 100%;
   font-size: 20px;
   float: left;
+  margin-right: 50px;
 }
 
 .top, .center, .bottom {
