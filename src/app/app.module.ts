@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { TuiModule } from 'ngx-tui-editor';
 
@@ -14,7 +14,14 @@ import { SignUpComponent } from './forms/sign-up/sign-up.component';
 import { MainComponent } from './dashboard/main/main.component';
 import { UserComponent } from './dashboard/user/user.component';
 import { BoardComponent } from './main/nav/board/board.component';
+import { AuthInterceptiorService } from './service/auth.interceptior.service';
 
+/** Interceptor Provider */
+const interceptor = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthInterceptiorService,
+  multi: true
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +41,7 @@ import { BoardComponent } from './main/nav/board/board.component';
     HttpClientModule,
     TuiModule
   ],
-  providers: [],
+  providers: [interceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
