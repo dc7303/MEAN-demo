@@ -5,9 +5,10 @@
 </div>
 <ng-template #loginpls>
   <form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm.value)" novalidate>
-    ID : <input formControlName="userId" type="text" ><br/>
+    ID : <input formControlName="userId" type="text"><br/>
     PW : <input formControlName="userPwd" type="password"><br/>
     <button type="submit">SignIn</button>
     <button type="button" (click)="goSignUpForm()">SignUp</button>
   </form>
 </ng-template>
+<app-update></app-update>

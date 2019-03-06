@@ -15,6 +15,7 @@ import { MainComponent } from './dashboard/main/main.component';
 import { UserComponent } from './dashboard/user/user.component';
 import { BoardComponent } from './main/nav/board/board.component';
 import { AuthInterceptiorService } from './service/auth.interceptior.service';
+import { UpdateComponent } from './main/nav/update/update.component';
 
 /** Interceptor Provider */
 const interceptor = {
@@ -30,7 +31,8 @@ const interceptor = {
     SignUpComponent,
     MainComponent,
     UserComponent,
-    BoardComponent
+    BoardComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,

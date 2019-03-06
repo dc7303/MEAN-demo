@@ -28,7 +28,7 @@ export class UserComponent implements OnInit {
   userDelete(userId: string) {
     this.userService.userDelete(userId)
       .subscribe(
-        res => console.log('user.component.userDelete ..'),
+        res => console.log('user.component.userDelete '),
         err => console.error(err)
       )
   }

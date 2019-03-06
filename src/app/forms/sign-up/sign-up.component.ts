@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../service/nav/auth.service';
@@ -13,8 +13,11 @@ import { User } from '../../interface/userInfo';
 export class SignUpComponent implements OnInit {
 
   private signUpForm = new FormGroup({
-    userId: new FormControl(''),
-    userPwd: new FormControl(''),
+    userId: new FormControl('', [
+      Validators.required,
+      Validators.pattern('[0-9a-zA-Z]{4,12}')
+    ]),
+    userPwd: new FormControl('', Validators.required),
     name: new FormControl(''),
     email: new FormControl('')
   });

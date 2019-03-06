@@ -1,12 +1,15 @@
 <div>
   <h1>SignUp</h1>
   <div>
-    <form [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm.value)">
+    <form [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm.value)" novalidate>
       ID : <input formControlName="userId" type="text"><br/>
       PW : <input formControlName="userPwd" type="password"><br/>
       NAME : <input formControlName="name" type="text"><br/>
       EMAIL : <input formControlName="email" type="text"><br/>
       <button type="submit">SignUp</button><button type="reset">Reset</button><button (click)="cancle()">cancle</button>
     </form>
+    <pre>{{ signUpForm.value | json }}</pre>
+    <pre>{{ signUpForm.status }}</pre>
+
   </div>
 </div>

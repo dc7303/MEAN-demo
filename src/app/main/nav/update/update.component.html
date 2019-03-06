@@ -1,0 +1,16 @@
+<h2>User Update</h2>
+<form #updateForm="ngForm" (ngSubmit)="userUpdate(updateForm)" novalidate>
+  ID: <input type="text" name="userId"
+              ngModel #userId="ngModel"
+              pattern="[a-zA-Z0-9]{4,10}"
+              required><br/>
+  PW: <input type="password" name="userPwd" ngModel #userPwd="ngModel"><br/>
+  <button type="submit">Update</button><br/>
+  <em *ngIf="userId.errors?.required && userId.touched">
+    userId를 입력하세요.!
+  </em>
+  <em *ngIf="userId.errors?.pattern && userId.touched">
+    잘못된 방식입니다.
+  </em>
+  <p>{{userId.errors | json}}</p>
+</form>
